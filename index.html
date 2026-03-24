@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crestview Growth Partners — Custom AI Sales Agents for Indian Tech Companies</title>
+<meta name="description" content="We build custom AI sales agents for Indian tech companies selling to Western buyers. Diagnosis-first. Deep personalization. Live in 5 days.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#060a14;--bg2:#0b1022;--bg3:#101830;--bg4:#161e38;
+--accent:#4c8dff;--accent2:#7b5cff;--accent-soft:rgba(76,141,255,0.12);
+--text:#d0d7e8;--text-mid:#8a95b0;--text-bright:#f0f4ff;--text-white:#ffffff;
+--green:#2dd4a0;--red:#ff5c5c;--orange:#ffaa40;--yellow:#ffd84d;
+--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+--f-main:'Plus Jakarta Sans',sans-serif;--f-display:'Playfair Display',serif;--f-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--f-main);color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px}
+
+/* GRAIN */
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(6,10,20,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-weight:700;font-size:0.95rem;color:var(--text-bright);text-decoration:none;letter-spacing:-0.01em}
+.nav-logo span{color:var(--accent);font-weight:800}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-link{font-size:0.82rem;color:var(--text-mid);text-decoration:none;transition:color 0.2s;font-weight:500}
+.nav-link:hover{color:var(--text-bright)}
+.nav-cta{padding:0.55rem 1.4rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;transition:all 0.3s;letter-spacing:0.01em}
+.nav-cta:hover{box-shadow:0 0 30px rgba(76,141,255,0.35);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 2.5rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse 70% 55% at 15% 45%,rgba(76,141,255,0.07) 0%,transparent 55%),radial-gradient(ellipse 50% 45% at 85% 25%,rgba(123,92,255,0.05) 0%,transparent 45%),radial-gradient(ellipse 35% 30% at 50% 85%,rgba(45,212,160,0.03) 0%,transparent 40%);pointer-events:none}
+.hero-grid{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:70px 70px;mask-image:radial-gradient(ellipse at 30% 50%,black 20%,transparent 65%);pointer-events:none}
+.hero-content{max-width:720px;position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:600;background:var(--accent-soft);border:1px solid rgba(76,141,255,0.2);color:var(--accent);margin-bottom:2.2rem;letter-spacing:0.02em}
+.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:var(--f-display);font-size:clamp(2.6rem,5.8vw,4.2rem);line-height:1.1;color:var(--text-white);margin-bottom:1.6rem;font-weight:500;letter-spacing:-0.01em}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:1.05rem;line-height:1.75;color:var(--text-mid);max-width:540px;margin-bottom:2.5rem;font-weight:400}
+.hero-cta-row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;border-radius:10px;font-size:0.95rem;font-weight:600;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(76,141,255,0.25);letter-spacing:0.01em}
+.btn-primary:hover{box-shadow:0 8px 40px rgba(76,141,255,0.4);transform:translateY(-2px)}
+.btn-ghost{padding:0.9rem 2rem;border-radius:10px;font-size:0.95rem;font-weight:600;background:transparent;color:var(--text);text-decoration:none;border:1px solid var(--border2);transition:all 0.3s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* BOT */
+.bot-guide{position:fixed;bottom:2rem;right:2rem;z-index:900;max-width:300px}
+.bot-bubble{background:var(--bg3);border:1px solid var(--border2);border-radius:14px 14px 4px 14px;padding:0.9rem 1.1rem;font-size:0.8rem;line-height:1.6;color:var(--text);box-shadow:0 12px 48px rgba(0,0,0,0.5);opacity:0;transform:translateY(16px);transition:all 0.5s cubic-bezier(0.16,1,0.3,1);margin-bottom:0.7rem}
+.bot-bubble.visible{opacity:1;transform:translateY(0)}
+.bot-avatar{display:flex;align-items:center;gap:0.5rem}
+.bot-icon{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:0.85rem;box-shadow:0 0 16px rgba(76,141,255,0.25)}
+.bot-label{font-size:0.68rem;color:var(--text-mid);line-height:1.3}.bot-label strong{color:var(--text-bright);font-weight:600}
+
+/* SECTIONS */
+.sec{padding:7rem 2.5rem;position:relative}
+.sec-inner{max-width:980px;margin:0 auto}
+.sec-tag{font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.sec h2{font-family:var(--f-display);font-size:clamp(1.9rem,3.8vw,2.8rem);line-height:1.15;color:var(--text-white);margin-bottom:1.2rem;font-weight:500}
+.sec h2 em{font-style:italic;color:var(--accent)}
+.sec-desc{font-size:1rem;line-height:1.75;color:var(--text-mid);max-width:560px;margin-bottom:2.5rem}
+
+/* ICP */
+.icp{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.icp-box{display:flex;align-items:center;gap:3rem;flex-wrap:wrap}
+.icp-text{flex:1;min-width:280px}
+.icp-checks{flex:1;min-width:280px;display:grid;gap:0.8rem}
+.icp-check{display:flex;align-items:flex-start;gap:0.7rem;font-size:0.92rem;color:var(--text);line-height:1.5}
+.icp-check .ck{width:20px;height:20px;border-radius:5px;background:rgba(45,212,160,0.1);border:1px solid rgba(45,212,160,0.25);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:0.7rem;font-weight:700;flex-shrink:0;margin-top:2px}
+
+/* SHIFT */
+.shift{background:var(--bg)}
+.shift-text{font-size:1.15rem;line-height:2;color:var(--text-mid);max-width:680px}
+.shift-text .hl{color:var(--text-white);font-weight:600;background:linear-gradient(135deg,rgba(76,141,255,0.12),rgba(123,92,255,0.08));padding:0.1rem 0.45rem;border-radius:5px}
+.shift-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.ss{text-align:center}
+.ss .num{font-family:var(--f-display);font-size:2.8rem;font-weight:500;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:0.4rem}
+.ss .lbl{font-size:0.82rem;color:var(--text-mid);line-height:1.4}
+
+/* PROBLEM */
+.problem{background:var(--bg2)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.pcard{padding:2rem;border-radius:14px;background:var(--bg);border:1px solid var(--border);transition:all 0.3s;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--red),var(--orange));opacity:0.5}
+.pcard:hover{border-color:rgba(255,92,92,0.15);transform:translateY(-2px)}
+.pcard .st{font-family:var(--f-mono);font-size:2rem;color:var(--red);font-weight:600;margin-bottom:0.5rem}
+.pcard h3{font-size:1rem;font-weight:700;margin-bottom:0.5rem;color:var(--text-white)}
+.pcard p{font-size:0.88rem;line-height:1.65;color:var(--text-mid)}
+
+/* WORKFLOW */
+.workflow{background:var(--bg)}
+.wf-steps{margin-top:3rem;position:relative}
+.wf-line{position:absolute;left:23px;top:0;width:2px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2),transparent);opacity:0.15}
+.wf-step{display:grid;grid-template-columns:48px 1fr;gap:2rem;padding:2.2rem 0;position:relative;opacity:1;transform:translateX(0);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.wf-step.pending{opacity:0;transform:translateX(-20px)}
+.wf-step.vis{opacity:1;transform:translateX(0)}
+.wf-dot{width:48px;height:48px;border-radius:50%;background:var(--bg3);border:2px solid rgba(76,141,255,0.4);display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:0.8rem;font-weight:600;color:var(--accent);position:relative;z-index:2;transition:all 0.3s}
+.wf-step.vis .wf-dot{box-shadow:0 0 20px rgba(76,141,255,0.2);border-color:var(--accent)}
+.wf-badge{display:inline-block;font-size:0.68rem;font-weight:700;padding:0.2rem 0.7rem;border-radius:5px;margin-bottom:0.5rem;background:rgba(45,212,160,0.08);border:1px solid rgba(45,212,160,0.18);color:var(--green);letter-spacing:0.02em}
+.wf-step h3{font-size:1.1rem;font-weight:700;color:var(--text-white);margin-bottom:0.4rem}
+.wf-step p{font-size:0.92rem;line-height:1.65;color:var(--text-mid);max-width:520px}
+
+/* DIFF */
+.diff{background:var(--bg2)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.3rem;margin-top:2rem}
+.dcard{padding:2rem;border-radius:12px;background:var(--bg);border:1px solid var(--border);transition:all 0.3s}
+.dcard:hover{border-color:rgba(76,141,255,0.2);transform:translateY(-2px)}
+.dcard .ico{font-size:1.6rem;margin-bottom:0.8rem;display:block}
+.dcard h3{font-size:0.98rem;font-weight:700;color:var(--text-white);margin-bottom:0.4rem}
+.dcard p{font-size:0.88rem;line-height:1.65;color:var(--text-mid)}
+
+/* PORTAL */
+.portal-sec{background:var(--bg);border-top:1px solid var(--border)}
+.portal-mock{margin-top:2.5rem;border-radius:14px;overflow:hidden;border:1px solid var(--border2);background:var(--bg3);box-shadow:0 24px 80px rgba(0,0,0,0.5)}
+.pm-bar{display:flex;align-items:center;gap:0.5rem;padding:0.7rem 1.2rem;background:var(--bg2);border-bottom:1px solid var(--border)}
+.pm-dot{width:10px;height:10px;border-radius:50%}.pm-dot.r{background:var(--red)}.pm-dot.y{background:var(--orange)}.pm-dot.g{background:var(--green)}
+.pm-url{font-family:var(--f-mono);font-size:0.68rem;color:var(--text-mid);margin-left:0.7rem}
+.pm-content{display:grid;grid-template-columns:1fr 320px;min-height:420px}
+.pm-main{padding:1.5rem;border-right:1px solid var(--border)}
+.pm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin-bottom:1.5rem}
+.pm-stat{padding:1rem;border-radius:8px;background:var(--bg);border:1px solid var(--border)}
+.pm-stat .l{font-size:0.62rem;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem;font-weight:600}
+.pm-stat .v{font-family:var(--f-mono);font-size:1.3rem;color:var(--text-white);font-weight:600}
+.pm-stat .s{font-size:0.68rem;color:var(--green);margin-top:0.15rem;font-weight:600}
+.pm-tabs{display:flex;gap:0;margin-bottom:1rem;border-bottom:1px solid var(--border)}
+.pm-tab{padding:0.5rem 1rem;font-size:0.72rem;font-weight:600;color:var(--text-mid);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
+.pm-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.pm-table{width:100%}
+.pm-tr{display:grid;grid-template-columns:1.8fr 1.8fr 1fr 1.2fr 1.5fr;padding:0.6rem 0.5rem;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:center}
+.pm-tr.head{font-size:0.65rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.06em;background:var(--bg2);border-radius:6px;margin-bottom:0.3rem}
+.pm-tr .name{color:var(--text-white);font-weight:600}
+.badge{padding:0.15rem 0.5rem;border-radius:4px;font-size:0.62rem;font-weight:700;display:inline-block}
+.badge.rep{background:rgba(45,212,160,0.1);color:var(--green);border:1px solid rgba(45,212,160,0.2)}
+.badge.opn{background:rgba(76,141,255,0.1);color:var(--accent);border:1px solid rgba(76,141,255,0.2)}
+.badge.snt{background:rgba(255,170,64,0.1);color:var(--orange);border:1px solid rgba(255,170,64,0.2)}
+.badge.mtg{background:rgba(123,92,255,0.1);color:var(--accent2);border:1px solid rgba(123,92,255,0.2)}
+.pm-reply{font-size:0.72rem;color:var(--green);font-style:italic}
+.pm-next{font-size:0.72rem;color:var(--text-mid)}
+
+/* CHAT PANEL */
+.pm-chat{padding:1rem;display:flex;flex-direction:column;background:var(--bg2)}
+.pm-chat-header{display:flex;align-items:center;gap:0.5rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border);margin-bottom:0.8rem}
+.pm-chat-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.pm-chat-title{font-size:0.78rem;font-weight:700;color:var(--text-white)}
+.pm-chat-sub{font-size:0.65rem;color:var(--text-mid);margin-left:auto}
+.chat-msgs{flex:1;display:flex;flex-direction:column;gap:0.6rem;overflow:hidden}
+.chat-msg{max-width:90%;padding:0.6rem 0.8rem;border-radius:10px;font-size:0.75rem;line-height:1.5}
+.chat-msg.user{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;align-self:flex-end;border-radius:10px 10px 3px 10px;font-weight:500}
+.chat-msg.agent{background:var(--bg3);border:1px solid var(--border);color:var(--text);align-self:flex-start;border-radius:10px 10px 10px 3px}
+.chat-msg.agent strong{color:var(--text-white)}
+.chat-quick{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem}
+.chat-qbtn{padding:0.3rem 0.6rem;border-radius:6px;font-size:0.62rem;font-weight:600;background:var(--bg3);border:1px solid var(--border2);color:var(--text-mid);cursor:pointer;transition:all 0.2s}
+.chat-qbtn:hover{border-color:var(--accent);color:var(--accent)}
+.chat-input{margin-top:auto;padding-top:0.6rem;display:flex;gap:0.4rem;align-items:center}
+.chat-input input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.5rem 0.7rem;font-size:0.75rem;color:var(--text);font-family:var(--f-main);outline:none}
+.chat-input button{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center}
+
+/* FAQ */
+.faq-sec{background:var(--bg2)}
+.faq-list{max-width:700px;margin-top:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.5rem 0}
+.faq-q{font-size:1rem;font-weight:700;color:var(--text-white);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--accent);transition:transform 0.3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:0.9rem;line-height:1.7;color:var(--text-mid);max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;padding-top:0}
+.faq-item.open .faq-a{max-height:300px;padding-top:1rem}
+
+/* CTA */
+.cta-sec{background:var(--bg);padding:7rem 2.5rem;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(76,141,255,0.05) 0%,transparent 55%);pointer-events:none}
+.cta-inner{max-width:620px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.cta-box{background:var(--bg3);border:1px solid var(--border2);border-radius:16px;padding:2.5rem;text-align:left;margin:2rem 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--green))}
+.cta-box h3{font-family:var(--f-display);font-size:1.5rem;color:var(--text-white);margin-bottom:0.3rem;font-weight:500}
+.cta-price{font-family:var(--f-mono);font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.5rem;display:block}
+.cta-list{list-style:none;margin-bottom:1.5rem}
+.cta-list li{padding:0.5rem 0;font-size:0.9rem;color:var(--text);display:flex;align-items:flex-start;gap:0.7rem;line-height:1.5}
+.cta-list li::before{content:'→';color:var(--accent);font-weight:700;flex-shrink:0}
+.cta-guar{padding:1rem 1.2rem;border-radius:8px;background:rgba(45,212,160,0.06);border:1px solid rgba(45,212,160,0.12);font-size:0.85rem;color:var(--text-mid);line-height:1.5}
+.cta-guar strong{color:var(--green)}
+.cta-urgency{margin-top:1.2rem;padding:0.8rem 1rem;border-radius:8px;background:rgba(255,92,92,0.06);border:1px solid rgba(255,92,92,0.12);font-size:0.85rem;color:var(--text-mid);line-height:1.5;display:flex;align-items:center;gap:0.6rem}
+.cta-urgency .pd{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.5s infinite;flex-shrink:0}
+
+/* FOOTER */
+footer{padding:3rem 2.5rem;text-align:center;border-top:1px solid var(--border);background:var(--bg)}
+footer p{font-size:0.78rem;color:var(--text-mid);line-height:1.8}
+footer a{color:var(--accent);text-decoration:none}
+
+/* REVEAL */
+.reveal{opacity:1;transform:translateY(0);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal.pending{opacity:0;transform:translateY(25px)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.pm-content{grid-template-columns:1fr}.pm-chat{border-top:1px solid var(--border)}
+.pm-stats{grid-template-columns:1fr 1fr}
+.pm-tr{grid-template-columns:1.5fr 1.5fr 1fr}
+.pm-tr>*:nth-child(n+4){display:none}
+}
+@media(max-width:768px){
+nav{padding:0.8rem 1.2rem}
+.nav-links{display:none}
+.hero,.sec,.cta-sec{padding-left:1.5rem;padding-right:1.5rem}
+.hero{padding-top:6.5rem}
+.shift-stats{grid-template-columns:1fr;gap:1.5rem}
+.bot-guide{display:none}
+.hero-cta-row{flex-direction:column;align-items:flex-start}
+.wf-step{grid-template-columns:36px 1fr;gap:1rem}
+.wf-dot{width:36px;height:36px;font-size:0.7rem}
+.icp-box{flex-direction:column;gap:2rem}
+.pgrid,.dgrid{grid-template-columns:1fr}
+}
+
+/* HERO ANIM */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-content>*{animation:fadeUp 0.6s ease-out both}
+.hero-tag{animation-delay:0.15s}.hero h1{animation-delay:0.25s}.hero-sub{animation-delay:0.35s}.hero-cta-row{animation-delay:0.45s}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="/" class="nav-logo"><span>Crestview</span> Growth Partners</a>
+<div class="nav-links">
+<a href="#how" class="nav-link">How It Works</a>
+<a href="#portal" class="nav-link">Dashboard</a>
+<a href="#offer" class="nav-link">Founding Offer</a>
+<a href="https://calendly.com/crestviewgrowthpartners-info/30min" class="nav-cta" target="_blank">Get Free Diagnosis</a>
+</div>
+</nav>
+
+<div class="bot-guide" id="botGuide"><div class="bot-bubble" id="botBubble"></div><div class="bot-avatar"><div class="bot-icon">🤖</div><div class="bot-label"><strong>Crestview Agent</strong><br>Your AI Outbound Specialist</div></div></div>
+
+<!-- HERO -->
+<section class="hero" id="hero"><div class="hero-bg"></div><div class="hero-grid"></div>
+<div class="hero-content">
+<div class="hero-tag"><span class="dot"></span> Now accepting founding partners</div>
+<h1>Your outbound is broken. We build an <em>AI agent</em> that fixes it.</h1>
+<p class="hero-sub">Custom AI sales agents for Indian tech companies selling to Western buyers. Diagnosis-first. Deep prospect research. Every email individually crafted. Fully managed. Live in 5 days. You see everything on a real-time dashboard.</p>
+<div class="hero-cta-row"><a href="https://calendly.com/crestviewgrowthpartners-info/30min" class="btn-primary" target="_blank">Get Your Free Diagnosis →</a><a href="#how" class="btn-ghost">See how it works</a></div>
+</div></section>
+
+<!-- ICP -->
+<section class="sec icp" id="icp"><div class="sec-inner reveal"><div class="icp-box">
+<div class="icp-text"><div class="sec-tag">Built For You</div><h2>Is this <em>your company?</em></h2><p class="sec-desc">Crestview is built specifically for Indian tech companies selling to US, UK, and EU buyers. If this sounds like you, we should talk.</p></div>
+<div class="icp-checks">
+<div class="icp-check"><div class="ck">✓</div><div>Indian IT services, SaaS, or product engineering company</div></div>
+
+<div class="icp-check"><div class="ck">✓</div><div>Selling to US, UK, or EU clients</div></div>
+<div class="icp-check"><div class="ck">✓</div><div>Running outbound but getting poor reply rates</div></div>
+<div class="icp-check"><div class="ck">✓</div><div>Founder-dependent sales — no repeatable engine</div></div>
+<div class="icp-check"><div class="ck">✓</div><div>Tired of spray-and-pray agencies that deliver nothing</div></div>
+</div></div></div></section>
+
+<!-- SHIFT -->
+<section class="sec shift" id="shift"><div class="sec-inner reveal">
+<div class="sec-tag">The Shift</div>
+<h2>The execution layer is <em>disappearing</em></h2>
+<div class="shift-text">Enterprise software is being rewritten. The old model — <span class="hl">tools + workflows + human execution</span> — is being replaced by <span class="hl">outcomes delivered by autonomous agents</span>.<br><br>Cloud didn't eliminate services. RPA didn't either. But AI agents change the equation at a deeper level — they don't make work faster, they <span class="hl">remove the need to start it</span>.<br><br>For Indian IT, this is structural. The firms that deploy AI agents to handle outbound execution will lock in pipeline while competitors send the same spray-and-pray sequences from 2019.</div>
+<div class="shift-stats">
+<div class="ss"><span class="num">91%</span><span class="lbl">of Indian sales professionals say AI agents are essential</span></div>
+<div class="ss"><span class="num">83%</span><span class="lbl">higher revenue growth for AI-using sales teams</span></div>
+<div class="ss"><span class="num">55%</span><span class="lbl">drop in quality conversations per SDR since 2014</span></div>
+</div></div></section>
+
+<!-- PROBLEM -->
+<section class="sec problem" id="problem"><div class="sec-inner reveal">
+<div class="sec-tag">The Problem</div>
+<h2>Why your outbound emails aren't getting <em>replies</em></h2>
+<div class="pgrid">
+<div class="pcard"><div class="st">1–2%</div><h3>Average reply rate</h3><p>Indian IT firms sending to US/EU buyers average 1–2% reply rates. Generic "we do everything" pitches get deleted in 2 seconds.</p></div>
+<div class="pcard"><div class="st">₹2–3L/mo</div><h3>What SDRs actually cost you</h3><p>A 3–5 person SDR team costs ₹2–3 lakh per month, needs 3–6 months to ramp, and still sends spray-and-pray sequences.</p></div>
+<div class="pcard"><div class="st">70%</div><h3>Founder-dependent growth</h3><p>Most mid-tier firms rely on founder networks and referrals. When the founder hits capacity, growth flatlines. No repeatable engine exists.</p></div>
+</div></div></section>
+
+<!-- WORKFLOW -->
+<section class="sec workflow" id="how"><div class="sec-inner">
+<div class="reveal"><div class="sec-tag">How It Works</div><h2>From broken outbound to <em>booked meetings</em> in 5 days</h2></div>
+<div class="wf-steps"><div class="wf-line"></div>
+<div class="wf-step"><div class="wf-dot">01</div><div><span class="wf-badge">Free — Before We Charge Anything</span><h3>We diagnose what's broken</h3><p>We analyze your positioning, messaging, ICP targeting, CTA structure, and sequences. You get a written report showing exactly what's killing your reply rates. Nobody else does this before selling.</p></div></div>
+<div class="wf-step"><div class="wf-dot">02</div><div><span class="wf-badge">Days 1–3</span><h3>We build your custom AI agent</h3><p>Trained on your exact ICP, your positioning, and your target market. Not a generic tool — a system built specifically for your company, your buyers, your competitive landscape.</p></div></div>
+<div class="wf-step"><div class="wf-dot">03</div><div><span class="wf-badge">Days 3–5</span><h3>Deep research. Personalized outreach. Deployed.</h3><p>The agent deep-researches every single prospect — company background, tech stack, recent hires, pain points — then writes outreach that reads like a human spent 2 hours researching each one.</p></div></div>
+<div class="wf-step"><div class="wf-dot">04</div><div><span class="wf-badge">Ongoing — Fully Managed</span><h3>You watch. We run. Meetings appear on your calendar.</h3><p>Every prospect, every email, every reply — visible live on your dashboard. Talk to the agent 24/7. Give it commands. Ask for updates. We handle replies, qualify leads, and book meetings. You close.</p></div></div>
+</div></div></section>
+
+<!-- DIFF -->
+<section class="sec diff" id="diff"><div class="sec-inner reveal">
+<div class="sec-tag">Why Crestview</div>
+<h2>Not an agency. Not a tool. <em>A custom AI system</em> managed end-to-end.</h2>
+<div class="dgrid">
+<div class="dcard"><span class="ico">🔍</span><h3>Diagnosis-first</h3><p>We tell you what's broken before selling anything. The diagnosis is free — always. No other outbound provider starts here.</p></div>
+<div class="dcard"><span class="ico">🧠</span><h3>Custom-built for your market</h3><p>Every AI agent is built and trained on your exact ICP, positioning, and competitive landscape. Not a template you configure.</p></div>
+<div class="dcard"><span class="ico">🔬</span><h3>Deep prospect research</h3><p>Every single prospect is individually researched — company background, tech stack, pain points, recent activity. Zero generic blasts.</p></div>
+<div class="dcard"><span class="ico">💬</span><h3>Talk to your agent 24/7</h3><p>Chat with your AI agent anytime. Ask for campaign updates, pause prospects, prioritize leads, request strategy changes — all through the dashboard.</p></div>
+<div class="dcard"><span class="ico">⚡</span><h3>Live in 5 days</h3><p>Agencies take 2–4 weeks. We deploy in 5 days. Your AI agent is researching prospects and sending personalized outreach by day 5.</p></div>
+<div class="dcard"><span class="ico">🔧</span><h3>Fully managed service</h3><p>You don't touch the system. We build, deploy, manage, optimize, handle replies, qualify leads, and book meetings. You focus on closing.</p></div>
+</div></div></section>
+
+<!-- PORTAL -->
+<section class="sec portal-sec" id="portal"><div class="sec-inner reveal">
+<div class="sec-tag">Your Dashboard</div>
+<h2>See <em>everything</em> in real time. Talk to your agent.</h2>
+<p class="sec-desc">No weekly PDF reports. No guessing what's happening. Every prospect, every email, every reply — live. Plus a 24/7 chat with your AI agent to give commands and get updates instantly.</p>
+<div class="portal-mock">
+<div class="pm-bar"><div class="pm-dot r"></div><div class="pm-dot y"></div><div class="pm-dot g"></div><span class="pm-url">portal.crestviewgrowthpartners.com</span></div>
+<div class="pm-content">
+<div class="pm-main">
+<div class="pm-stats">
+<div class="pm-stat"><div class="l">Contacted</div><div class="v">1,247</div><div class="s">↑ 186 this week</div></div>
+<div class="pm-stat"><div class="l">Open Rate</div><div class="v">52.8%</div><div class="s">Above benchmark</div></div>
+<div class="pm-stat"><div class="l">Replies</div><div class="v">67</div><div class="s">↑ 14 this week</div></div>
+<div class="pm-stat"><div class="l">Meetings</div><div class="v">18</div><div class="s">4 this week</div></div>
+</div>
+<div class="pm-tabs"><div class="pm-tab active">All</div><div class="pm-tab">Meetings 18</div><div class="pm-tab">Replied 67</div><div class="pm-tab">Opened</div><div class="pm-tab">Sent</div></div>
+<div class="pm-table">
+<div class="pm-tr head"><span>Name</span><span>Company</span><span>Stage</span><span>Reply</span><span>Next Step</span></div>
+<div class="pm-tr"><span class="name">Vikram Desai</span><span>InfraLogic Solutions</span><span><span class="badge mtg">Meeting</span></span><span class="pm-reply">"Let's talk Thursday"</span><span class="pm-next">Call booked Mar 27</span></div>
+<div class="pm-tr"><span class="name">Anita Rao</span><span>Nexgen Digital</span><span><span class="badge rep">Replied</span></span><span class="pm-reply">"Yes, send the breakdown"</span><span class="pm-next">Send diagnosis doc</span></div>
+<div class="pm-tr"><span class="name">Sanjay Mehta</span><span>CodeVertex Tech</span><span><span class="badge rep">Replied</span></span><span class="pm-reply">"Interesting — tell me more"</span><span class="pm-next">Send diagnosis + Calendly</span></div>
+<div class="pm-tr"><span class="name">Priya Kulkarni</span><span>StackBridge AI</span><span><span class="badge opn">Opened 4x</span></span><span style="font-size:0.72rem;color:var(--text-mid)">—</span><span class="pm-next">Email 2 sending tomorrow</span></div>
+<div class="pm-tr"><span class="name">Rohan Kapoor</span><span>CloudServe India</span><span><span class="badge snt">Sent</span></span><span style="font-size:0.72rem;color:var(--text-mid)">—</span><span class="pm-next">Monitoring opens</span></div>
+</div>
+</div>
+<div class="pm-chat">
+<div class="pm-chat-header"><div class="pm-chat-dot"></div><div class="pm-chat-title">Crestview Agent</div><div class="pm-chat-sub">Online</div></div>
+<div class="chat-msgs">
+<div class="chat-msg user">Show me all positive replies this week</div>
+<div class="chat-msg agent"><strong>14 positive replies this week:</strong><br>• Vikram Desai (InfraLogic) — wants to talk Thursday<br>• Anita Rao (Nexgen) — requested breakdown<br>• Sanjay Mehta (CodeVertex) — interested<br>• 11 more — shall I send you the full list?</div>
+<div class="chat-msg user">Pause outreach to CloudServe — they just signed with a competitor</div>
+<div class="chat-msg agent"><strong>Done.</strong> Paused all sequences for Rohan Kapoor at CloudServe India. No further emails will be sent. I've also removed them from the active pipeline.</div>
+<div class="chat-msg user">What's our meeting conversion rate?</div>
+<div class="chat-msg agent"><strong>18 meetings from 67 replies = 26.8% reply-to-meeting rate.</strong> That's above the 20% benchmark. Top-performing segment: fintech companies at 35% conversion.</div>
+</div>
+<div class="chat-quick"><span class="chat-qbtn">Positive replies</span><span class="chat-qbtn">Campaign summary</span><span class="chat-qbtn">Meetings this week</span><span class="chat-qbtn">Pause prospect</span></div>
+<div class="chat-input"><input type="text" placeholder="Ask the agent anything..." disabled><button>→</button></div>
+</div>
+</div></div></div></section>
+
+<!-- FAQ -->
+<section class="sec faq-sec" id="faq"><div class="sec-inner reveal">
+<div class="sec-tag">Common Questions</div>
+<h2>Questions we get <em>every time</em></h2>
+<div class="faq-list">
+<div class="faq-item"><div class="faq-q">Do you have case studies or client results?</div><div class="faq-a">We're in our founding phase — taking on 3 companies at a reduced rate in exchange for a case study when we hit agreed benchmarks. That's why the diagnosis is free and the first month has a full exit clause. You're not betting on our track record — you're betting on whether the diagnosis is accurate. And you'll know that before spending a rupee.</div></div>
+<div class="faq-item"><div class="faq-q">How is this different from hiring an outbound agency?</div><div class="faq-a">Agencies assign you a team of SDRs who send semi-personalized emails from templates. We build a custom AI agent trained on YOUR specific market and ICP. The agent deep-researches every single prospect individually. You see everything live on a dashboard — not in a weekly PDF. And we deploy in 5 days, not 2–4 weeks. Also: we diagnose what's broken BEFORE charging anything. No agency does that.</div></div>
+<div class="faq-item"><div class="faq-q">What if it doesn't work?</div><div class="faq-a">We offer a 30-day performance guarantee. If you don't see results in the first 30 days, you walk away free — no invoice for months 2 and 3. We bet on our own system because we've seen the diagnosis work across 20+ Indian tech companies. If we can't fix your outbound, you shouldn't pay us.</div></div>
+<div class="faq-item"><div class="faq-q">What do I actually need to do?</div><div class="faq-a">Almost nothing. You give us access to your ICP information, approve the messaging direction, and show up to close the meetings we book. We handle everything else — prospect research, list building, email personalization, multi-channel delivery, reply management, lead qualification, and meeting booking. You focus on closing deals.</div></div>
+</div></div></section>
+
+<!-- CTA -->
+<section class="cta-sec" id="offer"><div class="cta-inner reveal">
+<div class="sec-tag" style="color:var(--green)">Founding Partner Program</div>
+<h2>3 spots this month. <em>Special rate.</em></h2>
+<p class="sec-desc" style="max-width:500px;margin-left:auto;margin-right:auto">We're taking on 3 founding partners at a reduced rate. In exchange, we ask for a case study when we hit your targets. Once these spots fill, pricing goes to standard.</p>
+
+<!-- Standard pricing reference -->
+<div style="background:var(--bg);border:1px solid var(--border2);border-radius:14px;padding:2rem 2.5rem;margin-bottom:1.2rem;position:relative">
+<div style="position:absolute;top:1rem;right:1.5rem;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);background:var(--bg3);border:1px solid var(--border2);padding:0.2rem 0.7rem;border-radius:5px">Standard Pricing</div>
+<h3 style="font-family:var(--f-display);font-size:1.2rem;color:var(--text-bright);font-weight:500;margin-bottom:0.5rem">Growth Plan</h3>
+<div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">Setup Fee</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹1.5L</span></div>
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">Monthly</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹1.5L/mo</span></div>
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">3-Month Total</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹6L</span></div>
+</div>
+</div>
+
+<!-- Founding partner deal -->
+<div class="cta-box">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem">
+<h3>Founding Partner Deal</h3>
+<span style="font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);background:rgba(45,212,160,0.08);border:1px solid rgba(45,212,160,0.15);padding:0.25rem 0.8rem;border-radius:5px">Save ₹3L over 3 months</span>
+</div>
+<div style="display:flex;gap:2.5rem;align-items:center;flex-wrap:wrap;margin:1rem 0 1.5rem">
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">Setup Fee</span><span style="font-family:var(--f-mono);font-size:2rem;font-weight:700;color:var(--green)">₹0</span></div>
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">Monthly</span><span class="cta-price" style="margin-bottom:0;font-size:2rem">₹1L/mo</span></div>
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">3-Month Total</span><span style="font-family:var(--f-mono);font-size:2rem;font-weight:700;color:var(--text-white)">₹3L</span></div>
+</div>
+<div style="font-size:0.82rem;color:var(--text-mid);margin-bottom:1.2rem;line-height:1.5">Same deliverables as the Growth plan. Same AI agent. Same dashboard. Same managed service. Half the price — in exchange for a case study when we hit your targets.</div>
+<ul class="cta-list">
+<li>Custom AI agent built and trained on your ICP</li>
+<li>1,000 prospects per month, individually deep-researched</li>
+<li>Email + LinkedIn outreach, fully managed</li>
+<li>Reply management + lead qualification</li>
+<li>Weekly strategy calls</li>
+<li>Real-time dashboard + 24/7 agent chat</li>
+<li>3-month commitment</li>
+</ul>
+<div class="cta-guar"><strong>30-day performance guarantee:</strong> If you don't see results in the first 30 days, walk away free. No invoice for months 2 and 3. We bet on our own system.</div>
+<div class="cta-urgency"><span class="pd"></span><span>We're only taking <strong style="color:var(--text-white)">3 founding partners</strong> before moving to standard pricing. This rate won't be available once those spots are filled.</span></div>
+</div>
+<a href="https://calendly.com/crestviewgrowthpartners-info/30min" class="btn-primary" target="_blank" style="font-size:1.05rem;padding:1rem 2.5rem">Get Your Free Diagnosis →</a>
+<p style="margin-top:1rem;font-size:0.82rem;color:var(--text-mid)">Free diagnosis — no call required. We send you the report.</p>
+</div></section>
+
+<footer><p><strong style="color:var(--text)">Crestview Growth Partners</strong><br>Custom AI sales agents for Indian tech companies selling to Western buyers.<br><br><a href="/cdn-cgi/l/email-protection#c0abb5b3a8a380a3b2a5b3b4b6a9a5b7a7b2afb7b4a8b0a1b2b4aea5b2b3eea3afad"><span class="__cf_email__" data-cfemail="731806001b10331001160007051a160414011c04071b031201071d1601005d101c1e">[email&#160;protected]</span></a> · <a href="https://portal.crestviewgrowthpartners.com" target="_blank">Client Portal</a></p></footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Reveal
+const revEls=document.querySelectorAll('.reveal,.wf-step');
+revEls.forEach(el=>el.classList.add('pending'));
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.remove('pending');el.target.classList.add('vis')}})},{threshold:0.1,rootMargin:'0px 0px -20px 0px'});
+revEls.forEach(el=>ro.observe(el));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement;document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});item.classList.toggle('open')})});
+
+// Bot
+const bm=[
+{s:'hero',t:"Welcome. I'm your AI outbound specialist. Let me show you how we fix broken outbound for Indian tech companies. Scroll down."},
+{s:'icp',t:"If you're an Indian tech company selling to Western buyers with 20-200 employees — this system was built specifically for you."},
+{s:'shift',t:"The execution layer is being automated. The firms deploying AI agents first are locking in pipeline. The rest are falling behind."},
+{s:'problem',t:"These numbers aren't hypothetical. I see them across every Indian IT company I audit. The patterns are consistent — and fixable."},
+{s:'how',t:"This is what I do. I'm not a tool you learn. I'm built for your market, trained on your ICP, and I run autonomously. You watch the dashboard."},
+{s:'diff',t:"No other provider in India does diagnosis-first + custom AI agent + real-time dashboard + 24/7 agent chat + managed service. This doesn't exist elsewhere."},
+{s:'portal',t:"This is your dashboard. Talk to me anytime — ask for updates, pause prospects, get campaign summaries. I'm always on."},
+{s:'faq',t:"Got questions? These are the ones I hear most. The short answer: zero risk, zero setup, we prove it in 30 days or you walk."},
+{s:'offer',t:"The Growth plan normally costs ₹6L over 3 months. Founding partners get it for ₹3L — half price, zero setup. Same system, same results. 30-day guarantee means zero risk."}
+];
+const bb=document.getElementById('botBubble');let cb=-1;
+const bo=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const i=bm.findIndex(m=>m.s===en.target.id);if(i!==-1&&i!==cb){cb=i;bb.classList.remove('visible');setTimeout(()=>{bb.textContent=bm[i].t;bb.classList.add('visible')},300)}}})},{threshold:0.3});
+document.querySelectorAll('.sec').forEach(s=>bo.observe(s));
+</script>
+</body>
+</html>
