@@ -206,6 +206,7 @@ footer a{color:var(--accent);text-decoration:none}
 .pm-tr>*:nth-child(n+4){display:none}
 }
 @media(max-width:768px){
+.pricing-grid{grid-template-columns:1fr !important}
 nav{padding:0.8rem 1.2rem}
 .nav-links{display:none}
 .hero,.sec,.cta-sec{padding-left:1.5rem;padding-right:1.5rem}
@@ -361,14 +362,26 @@ nav{padding:0.8rem 1.2rem}
 <h2>3 spots this month. <em>Special rate.</em></h2>
 <p class="sec-desc" style="max-width:500px;margin-left:auto;margin-right:auto">We're taking on 3 founding partners at a reduced rate. In exchange, we ask for a case study when we hit your targets. Once these spots fill, pricing goes to standard.</p>
 
-<!-- Standard pricing reference -->
-<div style="background:var(--bg);border:1px solid var(--border2);border-radius:14px;padding:2rem 2.5rem;margin-bottom:1.2rem;position:relative">
+<!-- Standard + Enterprise pricing cards -->
+<div class="pricing-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+<div style="background:var(--bg);border:1px solid var(--border2);border-radius:14px;padding:2rem 2.5rem;position:relative">
 <div style="position:absolute;top:1rem;right:1.5rem;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);background:var(--bg3);border:1px solid var(--border2);padding:0.2rem 0.7rem;border-radius:5px">Standard Pricing</div>
 <h3 style="font-family:var(--f-display);font-size:1.2rem;color:var(--text-bright);font-weight:500;margin-bottom:0.5rem">Growth Plan</h3>
 <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
 <div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">Setup Fee</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹1.5L</span></div>
 <div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">Monthly</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹1.5L/mo</span></div>
 <div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">3-Month Total</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹6L</span></div>
+</div>
+</div>
+<div style="background:var(--bg);border:1px solid var(--border2);border-radius:14px;padding:2rem 2.5rem;position:relative">
+<div style="position:absolute;top:1rem;right:1.5rem;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);background:var(--bg3);border:1px solid var(--border2);padding:0.2rem 0.7rem;border-radius:5px">Enterprise Pricing</div>
+<h3 style="font-family:var(--f-display);font-size:1.2rem;color:var(--text-bright);font-weight:500;margin-bottom:0.5rem">Scale Plan</h3>
+<div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">Setup Fee</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹2.5L</span></div>
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">Monthly</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹2.5L/mo</span></div>
+<div><span style="font-size:0.72rem;color:var(--text-mid);display:block;margin-bottom:0.15rem">3-Month Total</span><span style="font-family:var(--f-mono);font-size:1.5rem;color:var(--text);font-weight:600">₹10L</span></div>
+</div>
+<div style="font-size:0.75rem;color:var(--text-mid);margin-top:0.8rem;line-height:1.4">Multi-vertical targeting, US/EU enterprise buyers, competitive positioning</div>
 </div>
 </div>
 
