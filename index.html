@@ -351,7 +351,7 @@ nav{padding:0.8rem 1.2rem}
 <div class="faq-list">
 <div class="faq-item"><div class="faq-q">Do you have case studies or client results?</div><div class="faq-a">We're in our founding phase — taking on 3 companies at a reduced rate in exchange for a case study when we hit agreed benchmarks. That's why the diagnosis is free and the first month has a full exit clause. You're not betting on our track record — you're betting on whether the diagnosis is accurate. And you'll know that before spending a rupee.</div></div>
 <div class="faq-item"><div class="faq-q">How is this different from hiring an outbound agency?</div><div class="faq-a">Agencies assign you a team of SDRs who send semi-personalized emails from templates. We build a custom AI agent trained on YOUR specific market and ICP. The agent deep-researches every single prospect individually. You see everything live on a dashboard — not in a weekly PDF. And we deploy in 5 days, not 2–4 weeks. Also: we diagnose what's broken BEFORE charging anything. No agency does that.</div></div>
-<div class="faq-item"><div class="faq-q">What if it doesn't work?</div><div class="faq-a">We offer a 30-day performance guarantee. If you don't see results in the first 30 days, you walk away free — no invoice for months 2 and 3. We bet on our own system because we've seen the diagnosis work across 20+ Indian tech companies. If we can't fix your outbound, you shouldn't pay us.</div></div>
+<div class="faq-item"><div class="faq-q">What if it doesn't work?</div><div class="faq-a">We do a formal performance checkpoint at day 60 against agreed targets. If trajectory isn't on track, you exit before month 3 — no penalty. We bet on our own system because we've seen the diagnosis work across 20+ Indian tech companies. If we can't fix your outbound, you shouldn't pay us.</div></div>
 <div class="faq-item"><div class="faq-q">What do I actually need to do?</div><div class="faq-a">Almost nothing. You give us access to your ICP information, approve the messaging direction, and show up to close the meetings we book. We handle everything else — prospect research, list building, email personalization, multi-channel delivery, reply management, lead qualification, and meeting booking. You focus on closing deals.</div></div>
 </div></div></section>
 
@@ -391,9 +391,9 @@ nav{padding:0.8rem 1.2rem}
 <li>Reply management + lead qualification</li>
 <li>Weekly strategy calls</li>
 <li>Real-time dashboard + 24/7 agent chat</li>
-<li>3-month commitment</li>
+<li>3-month commitment with exit clause after month 2</li>
 </ul>
-<div class="cta-guar"><strong>30-day performance guarantee:</strong> If you don't see results in the first 30 days, walk away free. No invoice for months 2 and 3. We bet on our own system.</div>
+<div class="cta-guar"><strong>60-day performance checkpoint:</strong> Formal review at day 60 against agreed targets. If trajectory isn't on track, exit before month 3 — no penalty. We bet on our own system.</div>
 <div class="cta-urgency"><span class="pd"></span><span>We're only taking <strong style="color:var(--text-white)">3 founding partners</strong> before moving to standard pricing. This rate won't be available once those spots are filled.</span></div>
 </div>
 <a href="https://calendly.com/crestviewgrowthpartners-info/30min" class="btn-primary" target="_blank" style="font-size:1.05rem;padding:1rem 2.5rem">Get Your Free Diagnosis →</a>
@@ -421,8 +421,8 @@ const bm=[
 {s:'how',t:"This is what I do. I'm not a tool you learn. I'm built for your market, trained on your ICP, and I run autonomously. You watch the dashboard."},
 {s:'diff',t:"No other provider in India does diagnosis-first + custom AI agent + real-time dashboard + 24/7 agent chat + managed service. This doesn't exist elsewhere."},
 {s:'portal',t:"This is your dashboard. Talk to me anytime — ask for updates, pause prospects, get campaign summaries. I'm always on."},
-{s:'faq',t:"Got questions? These are the ones I hear most. The short answer: zero risk, zero setup, we prove it in 30 days or you walk."},
-{s:'offer',t:"The Growth plan normally costs ₹6L over 3 months. Founding partners get it for ₹3L — half price, zero setup. Same system, same results. 30-day guarantee means zero risk."}
+{s:'faq',t:"Got questions? These are the ones I hear most. The short answer: zero risk, zero setup, formal performance checkpoint at day 60 — if we're not on track, you exit with no penalty."},
+{s:'offer',t:"The Growth plan normally costs ₹6L over 3 months. Founding partners get it for ₹3L — half price, zero setup. Same system, same results. 60-day performance checkpoint means zero risk."}
 ];
 const bb=document.getElementById('botBubble');let cb=-1;
 const bo=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const i=bm.findIndex(m=>m.s===en.target.id);if(i!==-1&&i!==cb){cb=i;bb.classList.remove('visible');setTimeout(()=>{bb.textContent=bm[i].t;bb.classList.add('visible')},300)}}})},{threshold:0.3});
